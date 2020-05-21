@@ -13,5 +13,10 @@ class ProduitController extends Controller{
         $produits = Produit::orderBy($sort)->simplePaginate(10);
         return view('backend.produits',['produits'=>$produits,'sort'=>$sort]);
     }
+
+    public function viewAdd(Request $request)
+    {
+        return view('backend.ajouter-produit');
+    }
     
 }
