@@ -56,6 +56,68 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               Gestion des produits  <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/admin/produits') }}">
+                                        <i class="fa fa-btn fa-list"></i>
+                                        Tous les produits
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/admin/ajouter-produit') }}">
+                                        <i class="fa fa-btn fa-plus"></i>
+                                        Ajouter un produit
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               Gestion des catégories  <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/admin/categories') }}">
+                                        <i class="fa fa-btn fa-list"></i>
+                                        Tous les catégories
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/admin/ajouter-category') }}">
+                                        <i class="fa fa-btn fa-plus"></i>
+                                        Ajouter une catégorie
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               Gestion des admins  <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/admin/admins') }}">
+                                        <i class="fa fa-btn fa-list"></i>
+                                        Tous les admins
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/admin/ajouter-admin') }}">
+                                        <i class="fa fa-btn fa-plus"></i>
+                                        Ajouter une admins
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
