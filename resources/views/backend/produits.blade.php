@@ -9,6 +9,24 @@
                     <h4 class="text-center">Tous les produits</h4>
                 </div>
                 <div class="panel-body">
+                    <div class="" style="justify-content: space-between;display: flex;">
+                    <div class="col-12 col-md-3">
+                        <h4>
+                            Trier par:
+                            @if($sort != "id")
+                                <a href="/admin/produits?page={{$produits->currentPage()}}&sort=id">ID</a>
+                            @else
+                                <a href="/admin/produits?page={{$produits->currentPage()}}&sort=views">Views</a>
+                            @endif
+                        </h4>
+                    </div>
+                    
+                    <div class="col-12 col-md-3">
+                        <a href="/admin/ajouter-produit" class="btn btn-block btn-primary">
+                            Ajouter un produit
+                        </a>
+                    </div>
+                </div>
                    <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -39,6 +57,7 @@
                             
                         </tbody>
                     </table>
+                    {{$produits->links()}}
                 </div>
             </div>
         </div>
