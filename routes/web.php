@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin/produits', function () {
-    return view('backend.produits');
-});
+Route::get('/admin/produits', "ProduitController@viewAll");
 
 Auth::routes();
 Route::get('logout', function () {
