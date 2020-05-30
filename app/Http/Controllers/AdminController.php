@@ -26,7 +26,7 @@ class AdminController extends Controller
         return redirect('/admin/admins');
     }
 
-    public function deleteAd1min($id)
+    public function deleteAdmin($id)
     {
         User::destroy($id);
         return redirect('/admin/admins');
