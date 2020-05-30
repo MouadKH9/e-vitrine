@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Produit;
 use Illuminate\Http\Request;
 use Auth;
@@ -19,7 +20,7 @@ class ProduitController extends Controller
 
     public function viewAdd(Request $request)
     {
-        return view('backend.ajouter-produit');
+        return view('backend.ajouter-produit', ["categories" => Category::all()]);
     }
 
     public function addProduct(Request $request)
@@ -28,7 +29,7 @@ class ProduitController extends Controller
         $prod->name = $request->input('name');
         $prod->description = $request->input('description');
         $prod->price = $request->input('price');
-        $prod->category_id = 1;
+        $prod->category_id = $request->input('category_id');
         $prod->user_id = Auth::user()->id;
 
         if ($request->has('image')) {
@@ -39,8 +40,7 @@ class ProduitController extends Controller
 
             $file = $image->storeAs($folder, $name . '.' . $image->getClientOriginalExtension(), "public");
 
-            $prod->image = $name . "." .
-                $image->getClientOriginalExtension();
+            $prod->image = $filePath;
         }
         $prod->save();
 

@@ -35,6 +35,17 @@
 
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label for="category_id">Categorie de produit</label>
+                                    <select placeholder="Categorie de produit" name="category_id" id="category_id" class="form-control">
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label for="image">Image de produit</label>
                                     <input type="file" class="form-control" name="image" id="image">
                                 </div>
