@@ -10,24 +10,24 @@
                 </div>
                 <div class="panel-body">
                     <div class="" style="justify-content: space-between;display: flex;">
-                    <div class="col-12 col-md-3">
-                        <h4>
-                            Trier par:
-                            @if($sort != "id")
+                        <div class="col-12 col-md-3">
+                            <h4>
+                                Trier par:
+                                @if($sort != "id")
                                 <a href="/admin/produits?page={{$produits->currentPage()}}&sort=id">ID</a>
-                            @else
+                                @else
                                 <a href="/admin/produits?page={{$produits->currentPage()}}&sort=views">Views</a>
-                            @endif
-                        </h4>
+                                @endif
+                            </h4>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <a href="/admin/ajouter-produit" class="btn btn-block btn-primary">
+                                Ajouter un produit
+                            </a>
+                        </div>
                     </div>
-                    
-                    <div class="col-12 col-md-3">
-                        <a href="/admin/ajouter-produit" class="btn btn-block btn-primary">
-                            Ajouter un produit
-                        </a>
-                    </div>
-                </div>
-                   <table class="table table-bordered">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -39,22 +39,25 @@
                         </thead>
                         <tbody>
                             @foreach ($produits as $produit)
-                                <tr>
-                                    <th scope="row">{{ $produit->id }}</th>
-                                    <td>{{ $produit->name }}</td>
-                                    <td>{{ substr($produit->description,0,10    ) }}...</td>
-                                    <td>{{ $produit->views }}</td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="#" class="text-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <th scope="row">
+                                    {{ $produit->id }}
+                                    <img src="/storage/{{ $produit->image }}" style="width: 40px; height: 40px; border-radius: 50%;">
+                                </th>
+                                <td>{{ $produit->name }} </td>
+                                <td>{{ substr($produit->description,0,10    ) }}...</td>
+                                <td>{{ $produit->views }}</td>
+                                <td>
+                                    <a href="#">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="#" class="text-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
                             @endforeach
-                            
+
                         </tbody>
                     </table>
                     {{$produits->links()}}

@@ -19,9 +19,10 @@ class CreateProduitsTable extends Migration
             $table->longText('description')->nullable();
             $table->string('image')->default('default.png');
             $table->integer('views')->unsigned()->default(0);
+            $table->double('price');
             $table->timestamps();
 
-            
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
