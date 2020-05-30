@@ -40,9 +40,6 @@
                                 </th>
                                 <td>{{ $category->name }} </td>
                                 <td class="actions">
-                                    <a href="/admin/modifier-category/{{$category->id}}">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
                                     <a class="text-danger" href="/admin/supprimer-category/{{$category->id}}">
                                         <i class="fa fa-trash"></i>
                                     </a>

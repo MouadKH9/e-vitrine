@@ -11,6 +11,7 @@ Route::get('/admin/supprimer-produit/{id}', "ProduitController@deleteProduct");
 
 Route::get('/admin/categories', "CategoryController@viewAll");
 Route::post('/admin/ajouter-category', "CategoryController@addCategory");
+Route::get('/admin/supprimer-category/{id}', "CategoryController@deleteCategory");
 
 
 Route::get('storage/{filename}', function ($filename) {
