@@ -13,6 +13,10 @@ Route::get('/admin/categories', "CategoryController@viewAll");
 Route::post('/admin/ajouter-category', "CategoryController@addCategory");
 Route::get('/admin/supprimer-category/{id}', "CategoryController@deleteCategory");
 
+Route::get('/admin/admins', "AdminController@viewAll");
+Route::post('/admin/ajouter-admin', "AdminController@addAdmin");
+Route::get('/admin/supprimer-admin/{id}', "AdminController@deleteAdmin");
+
 
 Route::get('storage/{filename}', function ($filename) {
     $path = storage_path('public/' . $filename);
