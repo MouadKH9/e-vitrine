@@ -33,6 +33,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Prix</th>
                                 <th scope="col">Views</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -42,13 +43,14 @@
                             <tr>
                                 <th scope="row">
                                     {{ $produit->id }}
-                                    <img src="/storage/{{ $produit->image }}" style="width: 40px; height: 40px; border-radius: 50%;">
+                                    <!-- <img src="/storage/{{ $produit->image }}" style="width: 40px; height: 40px; border-radius: 50%;"> -->
                                 </th>
                                 <td>{{ $produit->name }} </td>
                                 <td>{{ substr($produit->description,0,10    ) }}...</td>
+                                <td>{{ $produit->price }}</td>
                                 <td>{{ $produit->views }}</td>
-                                <td>
-                                    <a href="#">
+                                <td class="actions">
+                                    <a href="/admin/modifier-produit/{{$produit->id}}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a href="#" class="text-danger">
@@ -66,4 +68,13 @@
         </div>
     </div>
 </div>
+<style>
+    .actions {
+        text-align: center;
+    }
+
+    .actions i {
+        font-size: 24px;
+    }
+</style>
 @endsection

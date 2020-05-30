@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/produits', "ProduitController@viewAll");
 Route::get('/admin/ajouter-produit', "ProduitController@viewAdd");
+Route::get('/admin/modifier-produit/{id}', "ProduitController@viewEdit");
 Route::post('/admin/ajouter-produit', "ProduitController@addProduct");
+Route::post('/admin/modifier-produit/{id}', "ProduitController@editProduct");
 
 Route::get('storage/{filename}', function ($filename) {
     $path = storage_path('public/' . $filename);

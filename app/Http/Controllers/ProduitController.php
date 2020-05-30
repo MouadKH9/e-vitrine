@@ -23,6 +23,11 @@ class ProduitController extends Controller
         return view('backend.ajouter-produit', ["categories" => Category::all()]);
     }
 
+    public function viewEdit(Request $request, $id)
+    {
+        return view('backend.modifier-produit', ["prod" => Produit::findOrFail($id), "categories" => Category::all()]);
+    }
+
     public function addProduct(Request $request)
     {
         $prod = new Produit();
@@ -42,6 +47,19 @@ class ProduitController extends Controller
 
             $prod->image = $filePath;
         }
+        $prod->save();
+
+        return redirect('/admin/produits');
+    }
+
+    public function editProduct(Request $request, $id)
+    {
+        $prod = Produit::findOrFail($id);
+        $prod->name = $request->input('name');
+        $prod->description = $request->input('description');
+        $prod->price = $request->input('price');
+        $prod->category_id = $request->input('category_id');
+
         $prod->save();
 
         return redirect('/admin/produits');
