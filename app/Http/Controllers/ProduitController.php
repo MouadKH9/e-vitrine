@@ -64,4 +64,10 @@ class ProduitController extends Controller
 
         return redirect('/admin/produits');
     }
+
+    public function deleteProduct(Request $request, $id)
+    {
+        Produit::destroy($id);
+        return redirect('/admin/produits');
+    }
 }

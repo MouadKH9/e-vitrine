@@ -7,6 +7,7 @@ Route::get('/admin/ajouter-produit', "ProduitController@viewAdd");
 Route::get('/admin/modifier-produit/{id}', "ProduitController@viewEdit");
 Route::post('/admin/ajouter-produit', "ProduitController@addProduct");
 Route::post('/admin/modifier-produit/{id}', "ProduitController@editProduct");
+Route::get('/admin/supprimer-produit/{id}', "ProduitController@deleteProduct");
 
 Route::get('storage/{filename}', function ($filename) {
     $path = storage_path('public/' . $filename);
