@@ -2,20 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin/produits', "ProduitController@viewAll");
-Route::get('/admin/ajouter-produit', "ProduitController@viewAdd");
-Route::get('/admin/modifier-produit/{id}', "ProduitController@viewEdit");
-Route::post('/admin/ajouter-produit', "ProduitController@addProduct");
-Route::post('/admin/modifier-produit/{id}', "ProduitController@editProduct");
-Route::get('/admin/supprimer-produit/{id}', "ProduitController@deleteProduct");
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('produits', "ProduitController@viewAll");
+    Route::get('ajouter-produit', "ProduitController@viewAdd");
+    Route::get('modifier-produit/{id}', "ProduitController@viewEdit");
+    Route::post('ajouter-produit', "ProduitController@addProduct");
+    Route::post('modifier-produit/{id}', "ProduitController@editProduct");
+    Route::get('supprimer-produit/{id}', "ProduitController@deleteProduct");
 
-Route::get('/admin/categories', "CategoryController@viewAll");
-Route::post('/admin/ajouter-category', "CategoryController@addCategory");
-Route::get('/admin/supprimer-category/{id}', "CategoryController@deleteCategory");
+    Route::get('categories', "CategoryController@viewAll");
+    Route::post('ajouter-category', "CategoryController@addCategory");
+    Route::get('supprimer-category/{id}', "CategoryController@deleteCategory");
 
-Route::get('/admin/admins', "AdminController@viewAll");
-Route::post('/admin/ajouter-admin', "AdminController@addAdmin");
-Route::get('/admin/supprimer-admin/{id}', "AdminController@deleteAdmin");
+    Route::get('admins', "AdminController@viewAll");
+    Route::post('ajouter-admin', "AdminController@addAdmin");
+    Route::get('supprimer-admin/{id}', "AdminController@deleteAdmin");
+});
+
+
 
 
 Route::get('storage/{filename}', function ($filename) {
