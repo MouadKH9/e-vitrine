@@ -15,4 +15,10 @@ class FrontController extends Controller
         $produits = Produit::orderBy($sort, $type)->simplePaginate(8);
         return view('frontend.home', ["produits" => $produits, "popProduits" => $topProducts, "sort" => $sort]);
     }
+
+    public function produit($id)
+    {
+        $produit = Produit::findOrFail($id);
+        return view('frontend.produit', ["produit" => $produit]);
+    }
 }

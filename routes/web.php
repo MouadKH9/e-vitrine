@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', "FrontController@home");
+Route::get('/produit/{id}', "FrontController@produit");
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('produits', "ProduitController@viewAll");
