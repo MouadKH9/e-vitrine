@@ -17,7 +17,7 @@ class CreateProduitsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description')->nullable();
-            $table->string('image')->default('default.png');
+            $table->string('image')->default('/uploads/images/default.png');
             $table->integer('views')->unsigned()->default(0);
             $table->double('price');
             $table->timestamps();

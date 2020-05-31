@@ -11,23 +11,63 @@
 </div>
 
 <div class="container">
-    <h3 class="text-center">Produits populaires</h3>
+    <h3 class="title text-center">Produits populaires</h3>
     <div class="row">
         @foreach($popProduits as $prod)
-        <div class="col-md-3 prod">
-            <img src="/storage/{{ $prod->image }}" alt="Image" class="img-fluid">
-            <h4>
-                {{$prod->name}}
-            </h4>
-            <p>
-                {{$prod->description}}
-            </p>
-        </div>
+        <a href="/produit/{{$prod->id}}" class="not-a">
+            <div class="col-md-3 prod">
+                <img src="/storage/{{ $prod->image }}" alt="Image" class="img-fluid">
+                <h4>
+                    <span>
+                        {{$prod->name}}
+                    </span>
+                    <span>
+                        {{$prod->price}}MAD
+                    </span>
+                </h4>
+                <p>
+                    {{$prod->description ? $prod->description : "Pas de description"}}
+                </p>
+            </div>
+        </a>
+        @endforeach
+
+    </div>
+</div>
+
+
+<div class="container" style="margin-bottom: 20px;">
+    <h3 class="title text-center">Tous les produits</h3>
+    <div class="row">
+        @foreach($popProduits as $prod)
+        <a href="/produit/{{$prod->id}}" class="not-a">
+            <div class="col-md-3 prod">
+                <img src="/storage/{{ $prod->image }}" alt="Image" class="img-fluid">
+                <h4>
+                    {{$prod->name}}
+                </h4>
+                <p>
+                    {{$prod->description ? $prod->description : "Pas de description"}}
+                </p>
+            </div>
+        </a>
         @endforeach
     </div>
 </div>
 
 <style>
+    body {
+        background: #efefef;
+    }
+
+    .title {
+        margin: 20px 0;
+    }
+
+    a.not-a {
+        color: inherit;
+    }
+
     .wallpaper {
         height: 60vh;
         background: url('/wallpaper.jpg');
@@ -47,6 +87,18 @@
         color: #dadada;
     }
 
+    .prod {
+        background-color: white;
+        margin-right: 20px;
+        padding-top: 10px;
+        cursor: pointer;
+        transition: all .5s;
+    }
+
+    .prod:hover {
+        transform: scale(1.06);
+    }
+
     .prod img {
         width: 100%;
         height: 200px
@@ -57,6 +109,12 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+
+    .prod h4 {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
+
 
 @endsection

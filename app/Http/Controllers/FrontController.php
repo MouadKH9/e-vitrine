@@ -9,7 +9,7 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $topProducts = Produit::orderBy("views", 'desc')->limit(4)->get();
+        $topProducts = Produit::orderBy("views", 'desc')->limit(3)->get();
         return view('frontend.home', ["popProduits" => $topProducts]);
     }
 }

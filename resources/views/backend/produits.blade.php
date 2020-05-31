@@ -46,7 +46,7 @@
                                     <!-- <img src="/storage/{{ $produit->image }}" style="width: 40px; height: 40px; border-radius: 50%;"> -->
                                 </th>
                                 <td>{{ $produit->name }} </td>
-                                <td>{{ substr($produit->description,0,10    ) }}...</td>
+                                <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{$produit->description}}</td>
                                 <td>{{ $produit->price }}</td>
                                 <td>{{ $produit->views }}</td>
                                 <td class="actions">
