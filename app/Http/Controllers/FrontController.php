@@ -19,6 +19,9 @@ class FrontController extends Controller
     public function produit($id)
     {
         $produit = Produit::findOrFail($id);
+
+        $produit->increment('views', 1);
+
         return view('frontend.produit', ["produit" => $produit]);
     }
 }

@@ -43,8 +43,8 @@
             <div class="form-group">
                 <label for="sort">Trier par:</label>
                 <select onchange="sortChange()" class="form-control" name="sort" id="sort">
-                    <option {{$sort == "id" ? "selected" : ""}} value="id">ID</option>
-                    <option {{$sort == "views" ? "selected" : ""}} value="views">Views</option>
+                    <option {{$sort == "id" ? "selected" : ""}} value="id">Date</option>
+                    <option {{$sort == "views" ? "selected" : ""}} value="views">Popularité</option>
                     <option {{$sort == "price" ? "selected" : ""}} value="price">Prix</option>
                 </select>
             </div>
