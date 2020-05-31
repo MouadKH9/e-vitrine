@@ -11,7 +11,8 @@ class FrontController extends Controller
     {
         $topProducts = Produit::orderBy("views", 'desc')->limit(4)->get();
         $sort = $request->has('sort') ? $request->input('sort') : "id";
-        $produits = Produit::orderBy($sort, 'desc')->simplePaginate(8);
+        $type = $request->has('type') ? $request->input('type') : "desc";
+        $produits = Produit::orderBy($sort, $type)->simplePaginate(8);
         return view('frontend.home', ["produits" => $produits, "popProduits" => $topProducts, "sort" => $sort]);
     }
 }

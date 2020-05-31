@@ -39,6 +39,27 @@
 <div class="container" style="margin-bottom: 20px;">
     <h3 class="title text-center">Tous les produits</h3>
     <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="sort">Trier par:</label>
+                <select onchange="sortChange()" class="form-control" name="sort" id="sort">
+                    <option {{$sort == "id" ? "selected" : ""}} value="id">ID</option>
+                    <option {{$sort == "views" ? "selected" : ""}} value="views">Views</option>
+                    <option {{$sort == "price" ? "selected" : ""}} value="price">Prix</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select onchange="sortChange()" class="form-control" name="type" id="type">
+                    <option value="desc">Décroissant</option>
+                    <option value="asc">Croissant</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         @foreach($produits as $prod)
         <a href="/produit/{{$prod->id}}" class="not-a">
             <div class="col-md-3 prod">
@@ -126,5 +147,26 @@
     }
 </style>
 
+<script>
+    function getValues() {
+        let el = document.getElementById("sort");
+        let sort = el.options[el.selectedIndex].value;
+        el = document.getElementById("type");
+        let type = el.options[el.selectedIndex].value;
+        return {
+            sort,
+            type
+        };
+    }
+
+    function sortChange() {
+        let {
+            sort,
+            type
+        } = getValues();
+
+        window.location.href = `/?sort=${sort}&type=${type}`;
+    }
+</script>
 
 @endsection
