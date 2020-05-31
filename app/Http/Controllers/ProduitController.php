@@ -14,7 +14,7 @@ class ProduitController extends Controller
     public function viewAll(Request $request)
     {
         $sort = $request->has('sort') ? $request->input('sort') : "id";
-        $produits = Produit::orderBy($sort)->simplePaginate(10);
+        $produits = Produit::orderBy($sort, 'desc')->simplePaginate(10);
         return view('backend.produits', ['produits' => $produits, 'sort' => $sort]);
     }
 

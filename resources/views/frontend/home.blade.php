@@ -39,12 +39,17 @@
 <div class="container" style="margin-bottom: 20px;">
     <h3 class="title text-center">Tous les produits</h3>
     <div class="row">
-        @foreach($popProduits as $prod)
+        @foreach($produits as $prod)
         <a href="/produit/{{$prod->id}}" class="not-a">
             <div class="col-md-3 prod">
                 <img src="/storage/{{ $prod->image }}" alt="Image" class="img-fluid">
                 <h4>
-                    {{$prod->name}}
+                    <span>
+                        {{$prod->name}}
+                    </span>
+                    <span>
+                        {{$prod->price}}MAD
+                    </span>
                 </h4>
                 <p>
                     {{$prod->description ? $prod->description : "Pas de description"}}
@@ -53,6 +58,7 @@
         </a>
         @endforeach
     </div>
+    {{$produits->links()}}
 </div>
 
 <style>
@@ -68,6 +74,10 @@
         color: inherit;
     }
 
+    nav {
+        text-align: center;
+    }
+
     .wallpaper {
         height: 60vh;
         background: url('/wallpaper.jpg');
@@ -78,18 +88,18 @@
     .wallpaper h1 {
         text-align: center;
         margin-top: 10%;
-        color: white;
+        color: #E77613;
         text-transform: uppercase;
     }
 
     .wallpaper h4 {
         text-align: center;
-        color: #dadada;
+        color: #b15505;
     }
 
     .prod {
         background-color: white;
-        margin-right: 20px;
+        /* margin-right: 20px; */
         padding-top: 10px;
         cursor: pointer;
         transition: all .5s;
