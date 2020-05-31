@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.frontend')
 @section('content')
 
 <div class="container-fluid wallpaper">
@@ -55,6 +55,18 @@
                 <select onchange="sortChange()" class="form-control" name="type" id="type">
                     <option value="desc">Décroissant</option>
                     <option value="asc">Croissant</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-md-offset-6">
+            <div class="form-group">
+                <label for="type">Categorie:</label>
+                <select onchange="categoryChange()" class="form-control" name="category" id="category">
+                    <option {{$category_id == 0 ? "selected" : ""}} value="0">Tous</option>
+                    @foreach ($categories as $category)
+                    <option {{$category_id == $category->id ? "selected" : ""}} value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -165,7 +177,27 @@
             type
         } = getValues();
 
-        window.location.href = `/?sort=${sort}&type=${type}`;
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const category = urlParams.get('category') ? parseInt(urlParams.get('category')) : 0
+
+        window.location.href = `/?sort=${sort}&type=${type}&category=${category}`;
+    }
+
+    function categoryChange() {
+
+        let el = document.getElementById("category");
+        let category = el.options[el.selectedIndex].value;
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        let path = `/?category=${category}`;
+        if (urlParams.get('sort'))
+            path += "&sort=" + urlParams.get('sort');
+        if (urlParams.get('type'))
+            path += "&type=" + urlParams.get('type');
+
+        window.location.href = path;
     }
 </script>
 

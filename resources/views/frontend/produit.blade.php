@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.frontend')
 @section('content')
 
 
@@ -15,9 +15,15 @@
             <p style="font-size: 1.3em;word-wrap: break-word;">
                 {{$produit->description}}
             </p>
-            <span style="font-size: 1.5em;">
-                <i class="fa fa-eye"></i> {{$produit->views}}
-            </span>
+            <div style="display: flex;justify-content: space-between;font-size: 1.3em">
+                <span>
+                    <i class="fa fa-eye"></i> {{$produit->views}}
+                </span>
+
+                <a href="/?category={{$category->id}}">
+                    {{$category->name}}
+                </a>
+            </div>
         </div>
     </div>
 </div>
